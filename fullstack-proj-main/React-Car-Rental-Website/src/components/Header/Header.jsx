@@ -25,12 +25,15 @@ const navLinks = [
     path: "/contact",
     display: "Contact",
   },
+
+
 ];
 
 const Header = () => {
   const navigate = useNavigate();
   const menuRef = useRef(null);
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.token);
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
   const filteredNavLinks = navLinks.filter(link => {
     return !isLoggedIn || link.path !== "/contact";
   });
@@ -86,6 +89,26 @@ const Header = () => {
   >
     <i className="ri-user-line"></i> Profile
   </button>
+  <div>
+      {isAdmin && (
+  <button
+    onClick={() => {
+      navigate("/admin");
+    }}
+    className="d-flex align-items-center gap-1"
+    style={{
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      color: 'inherit',
+      padding: 0,
+    }}
+  >
+    <i className="ri-user-line"></i> Manage
+  </button>
+      )}
+      </div>
+
   </>
   
   
@@ -100,6 +123,7 @@ const Header = () => {
       <Link to="/register" className="d-flex align-items-center gap-1">
         <i className="ri-user-line"></i> Register
       </Link>
+      
     </>
   )}
 </div>
@@ -133,8 +157,8 @@ const Header = () => {
                   <i class="ri-earth-line"></i>
                 </span>
                 <div className="header__location-content">
-                  <h4>Morroco</h4>
-                  <h6>Casablanca, Morroco</h6>
+                  <h4>Morocco</h4>
+                  <h6>Casablanca, Morocco</h6>
                 </div>
               </div>
             </Col>

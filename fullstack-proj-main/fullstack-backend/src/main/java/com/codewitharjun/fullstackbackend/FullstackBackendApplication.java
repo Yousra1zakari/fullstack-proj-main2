@@ -26,9 +26,11 @@ public class FullstackBackendApplication implements CommandLineRunner {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String password = "1234";
         String encodedPassword = passwordEncoder.encode(password);
-		/*userRepository.save(new User("test9","test","test@test.com",encodedPassword,"1345","adress","USER"));
-		userRepository.save(new User("test10","test","test@test.com",encodedPassword,"1345","adress","ADMIN"));
-		userRepository.save(new User("test11","test","test@test.com",encodedPassword,"1345","adress","USER"));*/
+        /*userRepository.save(new User("zak3","zak","zak",encodedPassword,"zak","test","ADMIN",true));
+        userRepository.save(new User("zak4","zak","zak",encodedPassword,"zak","test","ADMIN",false));*/
+       /* userRepository.save(new User("zak","zak","zak",encodedPassword,"zak","test","USER"));
+        userRepository.save(new User("zak2","zak","zak",encodedPassword,"zak","test","ADMIN"));*/
+
 
     }
 }

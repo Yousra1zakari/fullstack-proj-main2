@@ -19,13 +19,16 @@ function Login() {
             });
 
             const token = response.data.token;
+            
             const usernamee=response.data.username;
+            const isAdmin = response.data.isAdmin;
 
             if (response.data.username === username) {
                 localStorage.setItem("token", token);
                 localStorage.setItem("username", usernamee);
+                localStorage.setItem("isAdmin",isAdmin);
 
-console.log(username,token);
+alert(username,token);
                 navigate('/home');
                 window.location.reload();
             } else {

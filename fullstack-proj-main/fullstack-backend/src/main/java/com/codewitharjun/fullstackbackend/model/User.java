@@ -21,6 +21,7 @@ public class User {
     private String adress;
 
     private String role;
+    private boolean isAdmin;
 
     public String getRole() {
         return role;
@@ -46,6 +47,9 @@ public class User {
     public void setAdress(String adress) {
         this.adress = adress;
     }
+    public boolean getIsAdmin() {return  isAdmin;}
+
+    public  void setIsAdmin(boolean is_admin) { this.isAdmin = is_admin; }
 
 
 
@@ -98,7 +102,7 @@ public class User {
         this.password = password;
     }
 
-    public User( String username, String name, String email, String password, String number, String adress,String role) {
+    public User( String username, String name, String email, String password, String number, String adress,String role, boolean isAdmin) {
         this.username = username;
         this.name = name;
         this.email = email;
@@ -106,6 +110,7 @@ public class User {
         this.number = number;
         this.adress = adress;
         this.role = role;
+        this.isAdmin = isAdmin;
     }
 
     public User() {

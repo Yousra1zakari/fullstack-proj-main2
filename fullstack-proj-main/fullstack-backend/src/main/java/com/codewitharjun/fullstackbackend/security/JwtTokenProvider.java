@@ -17,6 +17,7 @@ public class JwtTokenProvider {
     @Value("${app.jwtSecret}")
     private String jwtSecret;
 
+
     @Value("${app.jwtExpirationInMs}")
     private int jwtExpirationInMs;
 
@@ -31,7 +32,8 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }*/
-  public String generateToken(String username) {
+  public String
+  generateToken(String username) {
       Map<String, Object> claims = new HashMap<>();
       return doGenerateToken(claims, username);
   }

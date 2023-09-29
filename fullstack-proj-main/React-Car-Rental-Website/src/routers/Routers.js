@@ -9,14 +9,19 @@ import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
-
+import Admin from "../pages/Admin";
+import AddCar from "../pages/AddCar";
+import CarUpdate from "../pages/CarUpdate";
 
 const Routers = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/cars/edit/:id" element={<CarUpdate />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/insert_car" element={<AddCar />} />
       <Route path="/about" element={<About />} />
       <Route path="/cars" element={<CarListing />} />
       <Route path="/cars/:slug" element={<CarDetails />} /> 

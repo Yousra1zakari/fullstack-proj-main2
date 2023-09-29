@@ -44,26 +44,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       http.cors().and().csrf().disable()
               .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
               .authorizeRequests()
-              .antMatchers("/auth/login").permitAll()// Allow login without authentication
-              .antMatchers("/**").hasRole("ADMIN")//Allow all for Admin  b n
-              .antMatchers("/users/**","/VehiclesNotRented").hasRole("USER") // Requires USER role for /user/** endpoints
+              .antMatchers("/**").permitAll()
+             /* .antMatchers("/auth/login").permitAll()
+              .antMatchers("/VehiclesNotRented").permitAll()// Allow login without authenticati
+              .antMatchers("/users/**").hasAnyRole("USER","ADMIN") // Requires USER role for /user/** endpoints
+              .antMatchers("/**").hasRole("ADMIN")//Allow all for Admin  b n*/
+
+
               .anyRequest().authenticated()
-              .and().exceptionHandling().accessDeniedHandler((request, response, accessDeniedException) -> {
+              .and()
+              .exceptionHandling().accessDeniedHandler((request, response, accessDeniedException) -> {
           response.setStatus(HttpServletResponse.SC_FORBIDDEN);
           response.getWriter().write("Access Denied");; // All other requests require authentication
   });
   }
-    /*@Bean
+    @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-    }*/
+    }
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();

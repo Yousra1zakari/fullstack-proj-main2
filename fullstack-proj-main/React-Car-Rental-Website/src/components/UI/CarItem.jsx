@@ -22,13 +22,13 @@ const CarItem = (props) => {
 
           <div className="car__item-info d-flex align-items-center justify-content-between mt-3 mb-4">
             <span className=" d-flex align-items-center gap-1">
-              <i class="ri-car-line"></i> {type}
+              <i className="ri-car-line"></i> {type}
             </span>
             <span className=" d-flex align-items-center gap-1">
-              <i class="ri-settings-2-line"></i> {gear}
+              <i className="ri-settings-2-line"></i> {gear}
             </span>
             <span className=" d-flex align-items-center gap-1">
-              <i class="ri-timer-flash-line"></i> {year}
+              <i className="ri-timer-flash-line"></i> {year}
             </span>
           </div>
 

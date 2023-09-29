@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class VehiculeController {
 
@@ -40,6 +40,7 @@ public class VehiculeController {
     Vehicle updateVehicle(@RequestBody Vehicle newVehicle, @PathVariable Long id) {
         return Vehiculerepository.findById(id)
                 .map(Vehicle -> {
+                    Vehicle.setId(id);
                     Vehicle.setModel(newVehicle.getModel());
                     Vehicle.setYear(newVehicle.getYear());
                     Vehicle.setType(newVehicle.getType());
@@ -49,6 +50,7 @@ public class VehiculeController {
                     Vehicle.setGear(newVehicle.getGear());
                     Vehicle.setRented(newVehicle.getRented());
                     Vehicle.setColor(newVehicle.getColor());
+                    Vehicle.setBrand(newVehicle.getBrand());
                     return Vehiculerepository.save(Vehicle);
                 }).orElseThrow(() -> new UserNotFoundException(id));
     }
